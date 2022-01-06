@@ -1,0 +1,22 @@
+{
+    "ki": [
+        {"value": "apple" },
+        {"value": "pear"},
+        {"value": "banana"}
+    ],
+    "sho": [
+        {"value": "car" },
+        {"value": "bike"},
+        {"value": "truck"}
+    ],
+    "ten": [
+        {"value": "shoe" },
+        {"value": "vest"},
+        {"value": "scarf"}
+    ],
+    "ketsu": [
+        {"value": "pizza" },
+        {"value": "wine"},
+        {"value": "potato"}
+    ]
+}
