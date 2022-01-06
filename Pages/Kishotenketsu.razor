@@ -1,0 +1,52 @@
+﻿@page "/kishotenketsu"
+
+<PageTitle>Kishōtenketsu</PageTitle>
+
+<h1>Kishōtenketsu</h1>
+<p>
+    Kishōtenketsu describes the structure and development of classic Chinese, Korean and Japanese narratives.
+    The structure originated in China and was used in Chinese poetry as a four-line composition.
+    From there, it moved to Korea and Japan, where it is referred to as kishōtengō, from which the English word derives.
+</p>
+
+<p>
+    The Japanese interpretation of Kishōtenketsu is:
+    <br/>kiku (起句) is 'ki (起)': introduction, where 起 can mean rouse, wake up, get up
+    <br/>shōku (承句) is 'sho (承)': development, where 承 can also mean acquiesce, hear, listen to, be informed, receive
+    <br/>tenku (転句) is 'ten (転)': twist, where 転 can mean revolve, turn around, change
+    <br/>kekku (結句) is 'ketsu (結)': Conclusion, though 結 can also mean result; consequence; outcome; effect; or coming to fruition; bearing fruit
+</p>
+
+<p>
+    An example of a story using Kishōtenketsu is:
+    <br/>Ki, or introduction: There's this really amazing magical city.
+    <br/>Sho, or development: They practice human sacrifice, which most players will try to stop.
+    <br/>Ten, or twist/divergence/false appearance: The sacrifices were actually keeping a tarrasque miles below the city from waking.
+    <br/>Ketsu, or resolution: You must now fight a tarrasque, or otherwise solve the problem
+</p>
+
+<h1>Generate Kishōtenketsu</h1>
+
+<p role="Ki">Ki: <nbsp/> @ki</p>
+<p role="Sho">Sho: <nbsp/> @sho</p>
+<p role="Ten">Ten: <nbsp/> @ten</p>
+<p role="Ketsu">Ketsu: <nbsp/> @ketsu</p>
+
+<button class="btn btn-primary" @onclick="GenerateKishotenketsu">Generate new kishōtenketsu</button>
+
+<p/>
+
+@code {
+    private string ki = "";
+    private string sho = "";
+    private string ten = "";
+    private string ketsu = "";
+
+    private void GenerateKishotenketsu()
+    {
+        ki = "There's this really amazing magical city";
+        sho = "They practice human sacrifice, which most players will try to stop.";
+        ten = "The sacrifices were actually keeping a tarrasque miles below the city from waking.";
+        ketsu = "You must now fight a tarrasque, or otherwise solve the problem";
+    }
+}
