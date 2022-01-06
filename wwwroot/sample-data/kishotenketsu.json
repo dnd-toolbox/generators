@@ -1,0 +1,56 @@
+{
+    "ki": [
+        {"value": "You are in the ruins of a major city" },
+        {"value": "You are in a desert village"},
+        {"value": "You are a peasant farmer"},
+        {"value": "You find the ruins of an ancient civilization"},
+        {"value": "A strange-looking, low-hanging cloud hangs over the village"},
+        {"value": "The rotting corpse of a giant is located along with a well-traveled street"},
+        {"value": "A shopkeeper is renovating his store"},
+        {"value": "A small town suddenly appears from the fog"},
+        {"value": "You follow a lost sheep into tunnel leading to a secluded valley"},
+        {"value": "Your ship shipwrecks on the reef of a tropical island"},
+        {"value": "You lead a small warband in the subjugation of a rebelling town"}
+    ],
+    "sho": [
+        {"value": "People in the city seem to magically fall in love with you"},
+        {"value": "A giant monster appears on the outskirt of town"},
+        {"value": "A cult has taken over the local pub"},
+        {"value": "The local lord sacrifices children"},
+        {"value": "You find some evidence of a demon summoning ritual"},
+        {"value": "Your companion goes missing"},
+        {"value": "The town is slowly sinking into the ground"},
+        {"value": "The woods surrounding you are overflowing with monsters"},
+        {"value": "A dying soldier asks you to deliver a message to the lord"},
+        {"value": "The local orphanage is selling children"},
+        {"value": "You find a deck of magical cards"}
+    ],
+    "ten": [
+        {"value": "The mayor turn out to be a shapeshifter" },
+        {"value": "Those you thought hostile help fight a monster from a different plane"},
+        {"value": "Your friend betrays you and stabs you in the back"},
+        {"value": "Your enemies are helping you fight a monster from a different plane"},
+        {"value": "A warband of orcs appears at the gates"},
+        {"value": "The lord's partner uses dark magic to rule the land from the shadows"},
+        {"value": "A townperson accuses you of murdering their family"},
+        {"value": "A thief steals your equipment while you are asleep"},
+        {"value": "A mindflayer has taken your friend hostage"},
+        {"value": "The local militia is a front for the mob"},
+        {"value": "The town drunk grabs power in a peasant's revolution"},
+        {"value": "The priest holds a demon in the church's basement"}
+
+    ],
+    "ketsu": [
+        {"value": "You save the town by winning a dance-off" },
+        {"value": "The people of the land rise up together"},
+        {"value": "The barmaid sacrifices herself to deliver you from evil"},
+        {"value": "A deity answers your prayers and purges the land"},
+        {"value": "You persuade your enemies that they are better off terrorizing another town"},
+        {"value": "You survive after a mortal blow is blocked by a gift given by the townsfolk"},
+        {"value": "You break the magic circle laid by an evil sorcerer"},
+        {"value": "A magical artifact casts Wish"},
+        {"value": "You sign a contract with a demon"},
+        {"value": "You beat your nemesis in a protracted court battle"},
+        {"value": "You organize a small army to root out evil"}
+    ]
+}

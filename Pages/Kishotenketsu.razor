@@ -1,8 +1,19 @@
 ﻿@page "/kishotenketsu"
+@using generators.Generators
+@inject KishotenketsuGenerator generator
 
 <PageTitle>Kishōtenketsu</PageTitle>
 
-<h1>Kishōtenketsu</h1>
+<h1>Generate Kishōtenketsu</h1>
+
+<p role="Ki">Ki: <nbsp/> @model.ki</p>
+<p role="Sho">Sho: <nbsp/> @model.sho</p>
+<p role="Ten">Ten: <nbsp/> @model.ten</p>
+<p role="Ketsu">Ketsu: <nbsp/> @model.ketsu</p>
+
+<button class="btn btn-primary" @onclick="GenerateKishotenketsu">Generate new kishōtenketsu</button>
+
+<h1>About Kishōtenketsu</h1>
 <p>
     Kishōtenketsu describes the structure and development of classic Chinese, Korean and Japanese narratives.
     The structure originated in China and was used in Chinese poetry as a four-line composition.
@@ -25,28 +36,13 @@
     <br/>Ketsu, or resolution: You must now fight a tarrasque, or otherwise solve the problem
 </p>
 
-<h1>Generate Kishōtenketsu</h1>
-
-<p role="Ki">Ki: <nbsp/> @ki</p>
-<p role="Sho">Sho: <nbsp/> @sho</p>
-<p role="Ten">Ten: <nbsp/> @ten</p>
-<p role="Ketsu">Ketsu: <nbsp/> @ketsu</p>
-
-<button class="btn btn-primary" @onclick="GenerateKishotenketsu">Generate new kishōtenketsu</button>
-
-<p/>
+<p></p>
 
 @code {
-    private string ki = "";
-    private string sho = "";
-    private string ten = "";
-    private string ketsu = "";
-
-    private void GenerateKishotenketsu()
+    private KishotenketsuModel model = new KishotenketsuModel(ki: "", sho: "", ten: "", ketsu: "");
+    private async Task GenerateKishotenketsu()
     {
-        ki = "There's this really amazing magical city";
-        sho = "They practice human sacrifice, which most players will try to stop.";
-        ten = "The sacrifices were actually keeping a tarrasque miles below the city from waking.";
-        ketsu = "You must now fight a tarrasque, or otherwise solve the problem";
+        model = await generator.GenerateKishotenketsu();
     }
+
 }
