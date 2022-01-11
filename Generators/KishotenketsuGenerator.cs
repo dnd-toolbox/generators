@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-using Newtonsoft.Json;
 
 namespace generators.Generators {
     

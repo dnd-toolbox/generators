@@ -1,0 +1,44 @@
+﻿@page "/weapon"
+@using generators.Generators
+@inject WeaponGenerator generator
+
+<PageTitle>Weapon Generator</PageTitle>
+
+<h1>Generate Weapon</h1>
+
+<table>
+    <tr><td>Name:</td>          <td>@model.name</td>                                </tr>
+    <tr><td>Rarity:</td>        <td>@model.rarity</td>                              </tr>
+    <tr><td>Description:</td>   <td>@model.description</td>                         </tr>
+    <tr><td>Weapon </td>        <td>@model.weaponType</td>                          </tr>
+    <tr><td>Category:</td>      <td>@model.weaponCategory</td>                      </tr>
+    <tr><td>To </td>            <td>@model.toHitBonus</td>                          </tr>
+    <tr><td>Damage:</td>        <td>@model.damage</td>                              </tr>
+    <tr><td>Cost:</td>          <td>@model.cost.ToString("N0") gp</td>              </tr>
+    <tr><td>Weight:</td>        <td>@model.weight.ToString("N0") lbs.</td>          </tr>
+    <tr><td>Properties:</td>    <td>@string.Join(", ", model.properties)</td>       </tr>
+</table>
+
+<button class="btn btn-primary" @onclick="GenerateWeapon">Generate new weapon</button>
+
+<p></p>
+
+@code {
+    private WeaponModel model = new WeaponModel(
+        name: "",
+        rarity: Rarity.Common,
+        description: "",
+        weaponType: "",
+        weaponCategory: "",
+        toHitBonus: "",
+        damage: "",
+        cost: 0,
+        weight: 0,
+        properties: new string[]{}
+    );
+    private async Task GenerateWeapon()
+    {
+        model = await generator.GenerateWeapon();
+    }
+
+}

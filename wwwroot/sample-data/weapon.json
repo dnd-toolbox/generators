@@ -1,0 +1,24 @@
+{
+    
+    "enhancements": [
+        {"name": "Sharp", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["1", "6", "0", "Slashing"]}], "properties": [], "rarity": 1, "description": "This {0} has a sharp edge."},
+        {"name": "Very Sharp", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["2", "6", "0", "Slashing"]}], "properties": [], "rarity": 2, "description": "The {0} can cut through flesh like a knife through butter."},
+        {"name": "That Can The Moon", "isAdjective": false, "modifiers": [{"type": "BonusDamageOfType", "values": ["4", "6", "0", "Slashing"]}], "properties": [], "rarity": 4, "description": "This weapon is rumored to be sharp enough the cut cleanly through solid rock"},
+        {"name": "Fiery", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["1", "6", "0", "Fire"]}], "properties": [], "rarity": 1, "description": "The weapon spews flames."},
+        {"name": "Flaming", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["2", "6", "0", "Fire"]}], "properties": [], "rarity": 2, "description": "When left without proper protection, this weapon WILL burn your house down."},
+        {"name": "Blazing", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["3", "6", "0", "Fire"]}], "properties": [], "rarity": 3, "description": "This {0} has been blessed to rain fire down upon your enemies."},
+        {"name": "of the 7th layer of Hell", "isAdjective": false, "modifiers": [{"type": "BonusDamageOfType", "values": ["4", "6", "0", "Fire"]}], "properties": [], "rarity": 4, "description": "When facing an enemy, this {0} will burn with the hatred of a thousand demons."},
+        {"name": "Cold", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["1", "6", "0", "Cold"]}], "properties": [], "rarity": 1, "description": "Step 1. Place this {0} next to a glass. Step 2. Wait for 4 hours. Step 3 ???. Step 4 Profit!"},
+        {"name": "Freezing", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["2", "6", "0", "Cold"]}], "properties": [], "rarity": 2, "description": "This {0} causes instant frostbite when toucing bare skin."},
+        {"name": "of the Yeti", "isAdjective": false, "modifiers": [{"type": "BonusDamageOfType", "values": ["3", "6", "0", "Cold"]}], "properties": [], "rarity": 3, "description": "This {0} has been rumored to be used by a Yeti to kick up tremendous snow storms."},
+        {"name": "Himalayan", "isAdjective": true, "modifiers": [{"type": "BonusDamageOfType", "values": ["4", "6", "0", "Cold"]}], "properties": [], "rarity": 4, "description": "Obliterate your enemies with the weight of a mountain."}
+    ],
+    "weaponTypes": [
+        {"name": "Club", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 4, "damageType": "Bludgeoning"}], "fixedDamage": []}, "baseCost": 0.1, "weight": 2, "properties": ["Light"], "description": ""},
+        {"name": "Dagger", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 4, "damageType": "Piercing"}], "fixedDamage": []}, "baseCost": 2, "weight": 1, "properties": ["Finesse", "Light", "Thrown (range 20/60)"], "description": ""},
+        {"name": "Greatclub", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 8, "damageType": "Bludgeoning"}], "fixedDamage": []}, "baseCost": 0.2, "weight": 10, "properties": ["Two-handed"], "description": ""},
+        {"name": "Handaxe", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 6, "damageType": "Slashing"}], "fixedDamage": []}, "baseCost": 5, "weight": 2, "properties": ["Light", "Thrown (range 20/60)"], "description": ""},
+        {"name": "Javelin", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 6, "damageType": "Piercing"}], "fixedDamage": []}, "baseCost": 5, "weight": 2, "properties": ["Thrown (range 30/120)"], "description": ""},
+        {"name": "Mace", "category": "Simple Melee", "damage": {"dice": [{"diceCount": 1, "diceSize": 6, "damageType": "Bludgeoning"}], "fixedDamage": []}, "baseCost": 5, "weight": 4, "properties": [], "description": ""}
+    ]
+}
