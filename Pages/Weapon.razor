@@ -5,6 +5,11 @@
 <PageTitle>Weapon Generator</PageTitle>
 
 <h1>Generate Weapon</h1>
+<p>This generator produces weapons intended for DnD 5e</p>
+<p>Enhancements and weapon types are sourced from various sources including <a href="https://roll20.net/">roll20</a>, <a href="https://www.dndbeyond.com/">DnDBeyond</a>, and <a href="https://dandwiki.com">dandwiki</a></p>
+<button class="btn btn-primary" @onclick="GenerateWeapon">Generate new weapon</button>
+
+<p></p>
 
 <table>
     <tr><td>Name:</td>          <td>@model.name</td>                                </tr>
@@ -17,11 +22,12 @@
     <tr><td>Cost:</td>          <td>@model.cost.ToString("N0") gp</td>              </tr>
     <tr><td>Weight:</td>        <td>@model.weight.ToString("N0") lbs.</td>          </tr>
     <tr><td>Properties:</td>    <td>@string.Join(", ", model.properties)</td>       </tr>
+    <tr><td>Abilities:</td>     <td>@if(!model.abilities.Any()) { <p>None</p> }
+    @foreach (var item in model.abilities)
+    {
+        <p><b>@item.name</b> @item.description</p>
+    }</td></tr>
 </table>
-
-<button class="btn btn-primary" @onclick="GenerateWeapon">Generate new weapon</button>
-
-<p></p>
 
 @code {
     private WeaponModel model = new WeaponModel(
@@ -34,11 +40,15 @@
         damage: "",
         cost: 0,
         weight: 0,
-        properties: new string[]{}
+        properties: new string[]{},
+        abilities: new Ability[]{}
     );
     private async Task GenerateWeapon()
     {
         model = await generator.GenerateWeapon();
     }
-
+    protected override async Task OnInitializedAsync()
+    {
+        await GenerateWeapon();
+    }
 }

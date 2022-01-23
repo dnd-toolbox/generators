@@ -5,64 +5,43 @@ namespace generators.Generators {
     public class WeaponGenerator {
 
         private HttpClient _client;
+        private WeaponData _data = null!;
         public WeaponGenerator(HttpClient client) {
             _client = client;
         }
-        public async Task<WeaponModel> GenerateWeapon() {
-            var rarity = GetRandomRarity();
-            return await GenerateWeapon(rarity);
-        }
 
-        private Rarity GetRandomRarity() {
-            var rollForRarity = Random.Shared.NextSingle()*100;
-            switch(rollForRarity) {
-                case > 75:
-                    return Rarity.VeryRare;
-                case > 50:
-                    return Rarity.VeryRare;
-                case > 25:
-                    return Rarity.Uncommon;
-                default:
-                    return Rarity.Common;
+        public async Task LoadWeaponData() {
+            if (_data == null) {
+                var path = "sample-data/weapon.json";
+                _data = await _client.GetFromJsonAsync<WeaponData>(path) ?? new WeaponData(new List<Enhancement>(), new List<WeaponType>());
             }
         }
 
-        private async Task<WeaponModel> GenerateWeapon(Rarity rarity) {
-            var data = await GetRandomWeaponRecord(rarity);
+        public async Task<WeaponModel> GenerateWeapon() {
+            await LoadWeaponData();
+            var data = GetRandomWeaponData();
             var name = data.enhancement.isAdjective ? $"{data.enhancement.name} {data.weaponType.name}" : $"{data.weaponType.name} {data.enhancement.name}";
-            var description = string.Format(data.enhancement.description, data.weaponType.name);
-            var damage = GetWeaponDamage(data.weaponType.damage, data.enhancement.modifiers);
+            var description = string.Format(data.enhancement.description, data.weaponType.name.ToLower());
+            var damage = GetWeaponDamage(data.weaponType.damage, data.enhancement.modifiers ?? new Modifier[]{});
             return new WeaponModel(
                 name,
-                rarity,
+                rarity: data.enhancement.rarity,
                 description,
                 weaponType: data.weaponType.name,
                 weaponCategory: data.weaponType.category,
-                toHitBonus: $"+{(int) rarity / 2}",
+                toHitBonus: $"+{(int)data.enhancement.rarity / 2}",
                 damage,
-                cost: data.weaponType.baseCost*Math.Pow(10, (int)rarity),
+                cost: data.weaponType.baseCost*Math.Pow(10, (int)data.enhancement.rarity),
                 weight: data.weaponType.weight,
-                properties: data.weaponType.properties.Union(data.enhancement.properties).ToArray()
+                properties: (data.weaponType.properties ?? new string[]{}).Union(data.enhancement.properties ?? new string[]{}).ToArray(),
+                abilities: data.enhancement.abilities ?? new Ability[]{}
             );
         }
 
-        private async Task<WeaponRecord> GetRandomWeaponRecord(Rarity rarity) {
-            var path = "sample-data/weapon.json";
-            var data = await _client.GetFromJsonAsync<WeaponData>(path) ?? new WeaponData(new List<Enhancement>(), new List<WeaponType>());
-            var filteredData = GetDataWithRarity(data, rarity);
-            return GetRandomWeaponData(filteredData);
-        }
-
-        private WeaponData GetDataWithRarity(WeaponData data, Rarity rarity) {
-            return new WeaponData(
-                enhancements: data.enhancements.Where(a => a.rarity == rarity),
-                weaponTypes: data.weaponTypes
-            );
-        }
-        private WeaponRecord GetRandomWeaponData( WeaponData data) {
+        private WeaponRecord GetRandomWeaponData() {
             return new WeaponRecord(
-                enhancement: data.enhancements.OrderBy(a => Guid.NewGuid()).First(),
-                weaponType: data.weaponTypes.OrderBy(a => Guid.NewGuid()).First()
+                enhancement: _data.enhancements.OrderBy(a => Guid.NewGuid()).First(),
+                weaponType: _data.weaponTypes.OrderBy(a => Guid.NewGuid()).First()
             );
         }
 
@@ -171,8 +150,8 @@ namespace generators.Generators {
         private record WeaponRecord(Enhancement enhancement, WeaponType weaponType);
         private record WeaponData(IEnumerable<Enhancement> enhancements, IEnumerable<WeaponType> weaponTypes);
         private record Modifier(string type, string[] values);
-        private record Enhancement(string name, string description, bool isAdjective, Modifier[] modifiers, string[] properties, Rarity rarity);
-        private record WeaponType(string name, string description, string category, Damage damage, double baseCost, double weight, string[] properties);
+        private record Enhancement(string name, string description, bool isAdjective, Modifier[]? modifiers, string[]? properties, Ability[]? abilities, Rarity rarity);
+        private record WeaponType(string name, string description, string category, Damage damage, double baseCost, double weight, string[]? properties);
         private int[] diceSizes = {0, 2, 4, 6, 8, 12, 20};
        
     }
@@ -183,6 +162,7 @@ namespace generators.Generators {
             Rare = 3,
             VeryRare = 4,
         }
-    public record WeaponModel(string name, Rarity rarity, string description, string weaponType, string weaponCategory, string toHitBonus, string damage, double cost, double weight, string[] properties);
+    public record Ability(string name, string description);
+    public record WeaponModel(string name, Rarity rarity, string description, string weaponType, string weaponCategory, string toHitBonus, string damage, double cost, double weight, string[] properties, Ability[] abilities);
 
 }
